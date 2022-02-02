@@ -89,6 +89,10 @@ function main(data) {
 var flowers = metaphoric_svg.selectAll('g.flower')
     .data(data).enter().append('g')
     .classed('flower', true)
+    .on("click", function(d) {
+        var selected_flower = this;
+        animate(d, selected_flower);
+    })
 
 var perp = flowers.append("circle") // attach a circle
     .attr("class", "harasser")
@@ -173,12 +177,8 @@ var victim = flowers.selectAll('.polygon')
     .attr('points', function(d) {
         return d.path
     })
-    .on("click", function(d) {
-        var selected_shape = this.parentNode;
-        animate(d, selected_shape);
-    })
+   
     var stories_clicked = [];
-
     // function to select and deselect story
     function animate(d, selected_flower) {
         if (d3.select(selected_flower).classed("selected")) {
@@ -191,7 +191,6 @@ var victim = flowers.selectAll('.polygon')
             if ($('#story_clicked_ids').val() == " ") {
                 stories_clicked.length = 0;
             }
-            console.log(d.id);
             stories_clicked.push(d.id)
             $('#story_clicked_ids').val(stories_clicked);
             $('#no_story_clicked').val((Number($('#no_story_clicked').val()) + 1))
