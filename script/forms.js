@@ -118,7 +118,8 @@ function make_eng_form() {
                     type: 'radio',
                     id: 'eng_question1_option' + j,
                     name: 'eng_question' + i,
-                    value: eng_scale[j - 1],
+                    // value: eng_scale[j - 1],
+                    value:j,
                     class: 'form-check-input',
                     checked: 'true',
                     required: 'true'
@@ -180,7 +181,7 @@ function make_empathy_form(form, type) {
                     type: 'radio',
                     id: type + 'empathy_question1_option' + j,
                     name: type + 'empathy_question' + i,
-                    value: empathy_scale[j - 1],
+                    value: j,
                     class: 'form-check-input',
                     checked: 'checked',
                     required: 'true'
