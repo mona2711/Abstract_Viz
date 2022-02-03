@@ -11,6 +11,7 @@ height = 545;
 
 // append the svg object to the body of the page, appends a 'group' element to 'svg', moves the 'group' element to the top left margin
 var metaphoric_svg = d3.select("#metaphoric_viz").append("svg")
+.classed("main_svg",true)
 .attr("width", width + margin.left + margin.right)
 .attr("height", height + margin.top + margin.bottom)
 .append("g")
@@ -181,12 +182,7 @@ var victim = flowers.selectAll('.polygon')
     var stories_clicked = [];
     // function to select and deselect story
     function animate(d, selected_flower) {
-        if (d3.select(selected_flower).classed("selected")) {
-            d3.selectAll('.selected').classed('selected', false)
-            d3.selectAll('.flower').style('opacity', 1)
-            $('#d3-tip span').remove();
-    
-        } else {
+
             tip.show(d);
             if ($('#story_clicked_ids').val() == " ") {
                 stories_clicked.length = 0;
@@ -197,7 +193,7 @@ var victim = flowers.selectAll('.polygon')
             d3.selectAll('.selected').classed('selected', false)
             d3.select(selected_flower).classed("selected", true)
             d3.selectAll('.flower').style('opacity', .2)
-        }
+        
     }
 
 var centerScale = d3.scalePoint().padding(1.5).range([0, width]);
@@ -415,5 +411,15 @@ function setupButtons() {
 }
 
 setupButtons()
+
+document.addEventListener("click", function(event) {
+    const svg = document.querySelector('svg.main_svg');
+            if (event.target === svg) {
+            $(".flower").removeClass("selected");
+            $('.flower').attr('style','opacity: 1');
+            $('#d3-tip span').remove();
+               }
+            
+});
 
 }
