@@ -82,6 +82,7 @@ function make_demographic_form() {
 function make_eng_form() {
 
     var eng_scale = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+
     var eng_questions = [
         "While using this interactive visualization, I found its look and feel to be pleasing.",
         "The layout of this interactive visualization is clear and balanced.",
@@ -116,17 +117,17 @@ function make_eng_form() {
             $("#eng_op_wrapper" + i).append(
                 $('<input>').prop({
                     type: 'radio',
-                    id: 'eng_question1_option' + j,
+                    id: i + 'eng_question1_option' + j,
                     name: 'eng_question' + i,
                     // value: eng_scale[j - 1],
                     value:j,
                     class: 'form-check-input',
-                    // checked: 'true',
+                    checked: 'true',
                     required: 'true'
                 })
             ).append(
                 $('<label>').prop({
-                    for: 'eng_question1_option' + j
+                    for: i + 'eng_question1_option' + j
                 }).html(eng_scale[j - 1])
             )
         }
@@ -179,16 +180,17 @@ function make_empathy_form(form, type) {
             $("#" + type + "emp_op_wrapper" + i).append(
                 $('<input>').prop({
                     type: 'radio',
-                    id: type + 'empathy_question1_option' + j,
+                    id: type + i + 'empathy_question1_option' + j,
                     name: type + 'empathy_question' + i,
-                    value: j,
+                    value:j,
+                    // value: empathy_scale[j - 1],
                     class: 'form-check-input',
-                    // checked: 'checked',
+                    checked: 'checked',
                     required: 'true'
                 })
             ).append(
                 $('<label>').prop({
-                    for: type + 'empathy_question1_option' + j
+                    for: type + i +  'empathy_question1_option' + j
                 }).html(empathy_scale[j - 1])
             )
         }

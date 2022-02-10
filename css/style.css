@@ -48,8 +48,8 @@
 }
 
 #BtnContainer button {
-	padding: 2px;
-	width: 122px;
+	padding: 5px;
+	min-width: 122px;
 	font-weight: 500px;
 	margin-right: 10px;
 }
