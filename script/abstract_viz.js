@@ -80,6 +80,10 @@ data.forEach(function(d, i) {
     d.itype = "More Than One Institution"
     d.id = i;
     d.radius = 26;
+    if(d.id == 26){
+        d.event = "In December of 2015, the Chair of my department got angry at me for questioning a scheduling decision and told me that he would like me to lift my skirt. He then proceeded to tell me how many times he has thoughts about me and had to stop himself from coming down to my office. After I sent him an email asking him not to speak like that to me anymore, he sent me three emails (to my university as well as my private email address) and put a 2-page typed letter under my office door.  He admitted in those emails and the letter what he had said and did.  So, this was not a he said/she said -- it was a she said/he agreed. After the email and letter under my door, which very much made my skin crawl, I filled out a harassment complaint."
+        
+    }
 })
 main(data)
 })
