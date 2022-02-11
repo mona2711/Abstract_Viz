@@ -7,7 +7,7 @@ var margin = {
 },
 
 width = 940;
-height = 545;
+height = 530;
 
 // append the svg object to the body of the page, appends a 'group' element to 'svg', moves the 'group' element to the top left margin
 var metaphoric_svg = d3.select("#metaphoric_viz").append("svg")
@@ -62,6 +62,10 @@ var petalPaths = [
 ]
 ];
 
+var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
+
 
 var color_scale = d3.scaleOrdinal()
 .domain(['Undergraduate Student', 'Graduate Student', 'Staff',
@@ -94,7 +98,23 @@ var flowers = metaphoric_svg.selectAll('g.flower')
     .on("click", function(d) {
         var selected_flower = this;
         animate(d, selected_flower);
-    })
+    }).on("mouseover", function(d) {		
+        div.transition()		
+            .duration(200)		
+            .style("opacity", .9);		
+        div.html("<strong>" + "Harasser:"+ "</strong>" + d.perpetrator_new +"</br>" 
+        + "<strong>" + "Harraser Gender:" + "</strong>" +d.gendersquash + "</br>" 
+        + "<strong>" + "Victim:" + "</strong>" + d.cleantarget_new + "</br>" 
+        + "<strong>" + "Victim's Field of study:" + "</strong>" + d.cleandiscipline_new + "</br>" 
+        + "<strong>" + "Victim's Institute Type: " + "</strong>" + d.itype )	
+            .style("left", (d3.event.pageX) + "px")		
+            .style("top", (d3.event.pageY - 28) + "px");	
+        })					
+    .on("mouseout", function(d) {		
+        div.transition()		
+            .duration(500)		
+            .style("opacity", 0);	
+    });
 
 var perp = flowers.append("circle") // attach a circle
     .attr("class", "harasser")
@@ -303,7 +323,7 @@ function showTitles(byVar, scale) {
                 return scale(d);
                 }
             })
-            .attr('y', 595)
+            .attr('y', 585)
             .attr('font-size', '10px')
             .attr('font-weight', 'bold')
             .attr('text-anchor', 'middle')
