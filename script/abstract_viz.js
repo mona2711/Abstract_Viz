@@ -7,7 +7,7 @@ var margin = {
 },
 
 width = 940;
-height = 530;
+height = 500;
 
 // append the svg object to the body of the page, appends a 'group' element to 'svg', moves the 'group' element to the top left margin
 var metaphoric_svg = d3.select("#metaphoric_viz").append("svg")
@@ -75,7 +75,7 @@ var color_scale = d3.scaleOrdinal()
 
 /**************************************************************************/
 
-d3.csv("https://raw.githubusercontent.com/mona2711/Data/master/sample_main%20(1).csv").then(data => {
+d3.csv("https://raw.githubusercontent.com/mona2711/Data/master/sample_main_14feb.csv").then(data => {
 data.forEach(function(d, i) {
     if(d.itype == "Multiple"){
         d.itype = "More Than One Institution"
@@ -108,10 +108,10 @@ var flowers = metaphoric_svg.selectAll('g.flower')
         div.transition()		
             .duration(200)		
             .style("opacity", .9);		
-        div.html("<strong>" + "Harasser:"+ "</strong>" + d.perpetrator_new +"</br>" 
+        div.html(d.id+"<strong>" + "Harasser:"+ "</strong>" + d.perpetrator_new +"</br>" 
         + "<strong>" + "Harraser Gender:" + "</strong>" +d.gendersquash + "</br>" 
         + "<strong>" + "Victim:" + "</strong>" + d.cleantarget_new + "</br>" 
-        + "<strong>" + "Victim's Field of study:" + "</strong>" + d.cleandiscipline_new + "</br>" 
+        + "<strong>" + "Victim's Field of study:" + "</strong>" + d.cleandiscipline+ "</br>" 
         + "<strong>" + "Victim's Institute Type: " + "</strong>" + d.itype )	
             .style("left", (d3.event.pageX) + "px")		
             .style("top", (d3.event.pageY - 28) + "px");	
@@ -329,7 +329,7 @@ function showTitles(byVar, scale) {
                 return scale(d);
                 }
             })
-            .attr('y', 585)
+            .attr('y', 550)
             .attr('font-size', '10px')
             .attr('font-weight', 'bold')
             .attr('text-anchor', 'middle')
@@ -365,7 +365,7 @@ function showTitles(byVar, scale) {
                 return scale(d);
                 }
             })
-            .attr('y', 595)
+            .attr('y', 550)
             .attr('font-size', '10px')
             .attr('font-weight', 'bold')
             .attr('text-anchor', 'middle')
@@ -409,7 +409,7 @@ function showTitles(byVar, scale) {
                 return scale(d);
                 }
             })
-            .attr('y', 595)
+            .attr('y',550)
             .attr('font-size', '10px')
             .attr('font-weight', 'bold')
             .attr('text-anchor', 'middle')
