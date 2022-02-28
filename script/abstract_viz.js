@@ -80,6 +80,9 @@ data.forEach(function(d, i) {
     if(d.itype == "Multiple"){
         d.itype = "More Than One Institution"
     }
+    if(d.cleandiscipline_new == "Applied science"){
+        d.cleandiscipline_new = "Applied sciences"
+    }
     d.id = i;
     d.radius = 26;
     if(d.id == 26){
@@ -180,7 +183,7 @@ var victim = flowers.selectAll('.polygon')
         } else if (d.cleandiscipline_new == 'Formal sciences') {
             var path = petalPaths[3]
 
-        } else if (d.cleandiscipline_new == 'Applied science') {
+        } else if (d.cleandiscipline_new == 'Applied sciences') {
             var path = petalPaths[4]
 
         }
