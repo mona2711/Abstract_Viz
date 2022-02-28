@@ -63,7 +63,7 @@ $(function() {
             if (SheetName == 'Study_Part_B_interactions') {
                 var val = form.elements.viz_fact_learned.value;
                 // if (/^\s*$/g.test(val) || val.indexOf('\n') != -1) {
-                    if(val.trim().length < 10){
+                    if(val.trim().length < 1){
                     isFormValid = false;
                     $(error).show()
                 }
@@ -100,8 +100,8 @@ $(function() {
                         headers: headers,
                         body: new FormData(form)
                     })
-                    .then(response => console.log('Success!', response))
-                    .catch(error => console.error('Error!', error.message))
+                    // .then(response => console.log('Success!', response))
+                    // .catch(error => console.error('Error!', error.message))
                 $(hide_Comp).hide()
                 $(show_Comp).show()
 
